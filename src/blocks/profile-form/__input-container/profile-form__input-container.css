@@ -1,0 +1,17 @@
+.profile-form__input-container {
+    width: 410px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #424242;
+}
+
+.profile-form__input-container:nth-child(3) {
+    border-bottom: none;
+    margin-top: 17px;
+}
+
+@media screen and (max-width: 420px) and (min-width: 320px) {
+    .profile-form__input-container {
+        width: 260px;
+    }
+}

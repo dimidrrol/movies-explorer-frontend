@@ -1,0 +1,9 @@
+.account-button__icon {
+    border-radius: 6px;
+    background-color: #313131;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

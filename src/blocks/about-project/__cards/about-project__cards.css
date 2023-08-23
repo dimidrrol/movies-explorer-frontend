@@ -1,0 +1,36 @@
+.about-project__cards {
+    max-width: 1140px;
+    margin: 70px auto 110px;
+    display: flex;
+    gap: 40px;
+}
+
+@media screen and (max-width: 1160px) {
+    .about-project__cards {
+        width: 900px;
+    }
+}
+
+@media screen and (max-width: 930px) {
+    .about-project__cards {
+        width: 668px;
+        gap: 30px;
+        margin-bottom: 93px;
+    }
+}
+
+@media screen and (max-width: 690px) {
+    .about-project__cards {
+        width: 570px;
+    }
+}
+
+@media screen and (max-width: 600px) and (min-width: 320px) {
+    .about-project__cards {
+        flex-direction: column;
+        width: 284px;
+        gap: 56px;
+        margin-bottom: 60px;
+        margin-top: 60px;
+    }
+}

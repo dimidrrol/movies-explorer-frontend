@@ -1,0 +1,37 @@
+.footer__title {
+    color: #8B8B8B;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 1140px;
+    text-align: center;
+    margin: 79px auto 0;
+    height: 36px;
+    border-bottom: 1px solid #424242;
+}
+
+@media screen and (max-width: 1160px) {
+    .footer__title {
+        width: 900px;
+    }
+}
+
+@media screen and (max-width: 930px) {
+    .footer__title {
+        width: 668px;
+    }
+}
+
+@media screen and (max-width: 690px) {
+    .footer__title {
+        width: 570px;
+    }
+}
+
+@media screen and (max-width: 600px) and (min-width: 320px) {
+    .footer__title {
+        width: 300px;
+        font-size: 12px;
+    }
+}

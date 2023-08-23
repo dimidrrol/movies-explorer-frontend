@@ -1,0 +1,16 @@
+.title__text {
+    color: #ffffff;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    max-height: 27px;
+    margin: 0;
+}
+
+@media screen and (max-width: 600px) and (min-width: 320px) {
+    .title__text {
+        font-size: 18px;
+        line-height: normal;
+    }
+}

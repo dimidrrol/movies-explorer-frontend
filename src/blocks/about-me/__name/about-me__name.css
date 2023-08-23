@@ -1,0 +1,33 @@
+.about-me__name {
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 58px;
+    color: #ffffff;
+    margin: 0 0 18px 0;
+    width: 600px;
+}
+
+@media screen and (max-width: 1160px) {
+    .about-me__name {
+        width: 400px
+    }
+}
+
+@media screen and (max-width: 930px) {
+    .about-me__name {
+        width: 364px;
+        font-size: 40px;
+        line-height: 40px;
+        margin-bottom: 16px;
+    }
+}
+
+@media screen and (max-width: 690px) and (min-width: 320px) {
+    .about-me__name {
+        width: 292px;
+        font-size: 30px;
+        line-height: normal;
+        margin-bottom: 20px;
+    }
+}

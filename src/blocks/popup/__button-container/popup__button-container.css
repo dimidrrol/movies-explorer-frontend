@@ -1,0 +1,13 @@
+.popup__button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    margin: 159px auto 621px;
+}
+
+@media screen and (max-width: 520px) and (min-width: 320px) {
+    .popup__button-container {
+        gap: 24px;
+        margin: 144px auto 444px;
+    }
+}

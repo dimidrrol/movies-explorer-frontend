@@ -1,0 +1,11 @@
+.input {
+    position: relative;
+    width: 396px;
+    height: 54px;
+}
+
+@media screen and (max-width: 420px) and (min-width: 320px) {
+    .input {
+        width: 260px;
+    }
+}

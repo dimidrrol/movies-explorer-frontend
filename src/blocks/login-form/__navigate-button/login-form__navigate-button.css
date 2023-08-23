@@ -1,0 +1,17 @@
+.login-form__navigate-button {
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: #4285F4;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 420px) and (min-width: 320px) {
+    .login-form__navigate-button {
+        font-size: 12px;
+    }
+}

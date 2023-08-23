@@ -1,0 +1,21 @@
+.movies-card__button {
+    border: 0;
+    padding: 0;
+    border-radius: 30px;
+    width: 100px;
+    height: 29px;
+    margin: 0 auto 18px;
+    color: #ffffff;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 11px;
+    background-color: #313131;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+    .movies-card__button {
+        margin-bottom: 14px;
+    }
+}

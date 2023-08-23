@@ -1,0 +1,15 @@
+.input__input {
+    border: none;
+    padding: 0;
+    width: 100%;
+    outline: none;
+    background-color: transparent;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: #FFFFFF;
+    height: 54px;
+    border-bottom: 1px solid #424242;
+    cursor: pointer;
+}

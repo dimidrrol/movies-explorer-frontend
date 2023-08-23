@@ -1,0 +1,14 @@
+.movies-card__description {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: 18px auto 0;
+    align-items: center;
+    max-height: 18px;
+}
+
+@media screen and (max-width: 600px) {
+    .movies-card__description {
+        margin-top: 14px;
+    }
+}

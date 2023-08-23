@@ -1,0 +1,12 @@
+.about-project__frontend {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    grid-column: 2 / span 4;
+}
+
+@media screen and (max-width: 600px) and (min-width: 320px) {
+    .about-project__frontend {
+        grid-column: 3 / span 3;
+    }
+}

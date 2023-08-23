@@ -1,0 +1,21 @@
+.techs__stack {
+    max-width: 690px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    margin: 0 auto 100px;
+}
+
+@media screen and (max-width: 768px) {
+    .techs__stack {
+        margin-bottom: 90px;
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+@media screen and (max-width: 620px) and (min-width: 320px) {
+    .techs__stack {
+        margin-bottom: 70px;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

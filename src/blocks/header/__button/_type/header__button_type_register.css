@@ -1,0 +1,12 @@
+.header__button-register {
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+}
+
+@media screen and (max-width: 550px) and (min-width: 320px) {
+    .header__button-register {
+        font-size: 10px;
+    }
+}
