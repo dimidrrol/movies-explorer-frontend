@@ -28,36 +28,38 @@ function Movies(props) {
                 navigateLogin={props.navigateLogin}
                 navigateRegister={props.navigateRegister}
             />
-            <SearchForm />
-            <MoviesCardList>
-                <MoviesCard>
-                    <button onClick={handleSave} type='button' className={`movies-card__button button-hover ${isSaved ? 'movies-card__button_type_saved' : ''}`}>{isSaved ? '\u2713' : 'Сохранить'}</button>
-                </MoviesCard>
-                <MoviesCard>
-                    <button onClick={handleSave} type='button' className={`movies-card__button button-hover ${isSaved ? 'movies-card__button_type_saved' : ''}`}>{isSaved ? '\u2713' : 'Сохранить'}</button>
-                </MoviesCard>
-                <MoviesCard>
-                    <button onClick={handleSave} type='button' className={`movies-card__button button-hover ${isSaved ? 'movies-card__button_type_saved' : ''}`}>{isSaved ? '\u2713' : 'Сохранить'}</button>
-                </MoviesCard>
-                <MoviesCard>
-                    <button onClick={handleSave} type='button' className={`movies-card__button button-hover ${isSaved ? 'movies-card__button_type_saved' : ''}`}>{isSaved ? '\u2713' : 'Сохранить'}</button>
-                </MoviesCard>
-                <MoviesCard>
-                    <button onClick={handleSave} type='button' className={`movies-card__button button-hover ${isSaved ? 'movies-card__button_type_saved' : ''}`}>{isSaved ? '\u2713' : 'Сохранить'}</button>
-                </MoviesCard>
-                <MoviesCard>
-                    <button onClick={handleSave} type='button' className={`movies-card__button button-hover ${isSaved ? 'movies-card__button_type_saved' : ''}`}>{isSaved ? '\u2713' : 'Сохранить'}</button>
-                </MoviesCard>
-                <MoviesCard>
-                    <button onClick={handleSave} type='button' className={`movies-card__button button-hover ${isSaved ? 'movies-card__button_type_saved' : ''}`}>{isSaved ? '\u2713' : 'Сохранить'}</button>
-                </MoviesCard>
-                <MoviesCard>
-                    <button onClick={handleSave} type='button' className={`movies-card__button button-hover ${isSaved ? 'movies-card__button_type_saved' : ''}`}>{isSaved ? '\u2713' : 'Сохранить'}</button>
-                </MoviesCard>
-                <MoviesCard>
-                    <button onClick={handleSave} type='button' className={`movies-card__button button-hover ${isSaved ? 'movies-card__button_type_saved' : ''}`}>{isSaved ? '\u2713' : 'Сохранить'}</button>
-                </MoviesCard>
-            </MoviesCardList>
+            <main>
+                <SearchForm />
+                <MoviesCardList>
+                    <MoviesCard>
+                        <button onClick={handleSave} type='button' className={`movies-card__button button-hover ${isSaved ? 'movies-card__button_type_saved' : ''}`}>{isSaved ? '\u2713' : 'Сохранить'}</button>
+                    </MoviesCard>
+                    <MoviesCard>
+                        <button onClick={handleSave} type='button' className={`movies-card__button button-hover ${isSaved ? 'movies-card__button_type_saved' : ''}`}>{isSaved ? '\u2713' : 'Сохранить'}</button>
+                    </MoviesCard>
+                    <MoviesCard>
+                        <button onClick={handleSave} type='button' className={`movies-card__button button-hover ${isSaved ? 'movies-card__button_type_saved' : ''}`}>{isSaved ? '\u2713' : 'Сохранить'}</button>
+                    </MoviesCard>
+                    <MoviesCard>
+                        <button onClick={handleSave} type='button' className={`movies-card__button button-hover ${isSaved ? 'movies-card__button_type_saved' : ''}`}>{isSaved ? '\u2713' : 'Сохранить'}</button>
+                    </MoviesCard>
+                    <MoviesCard>
+                        <button onClick={handleSave} type='button' className={`movies-card__button button-hover ${isSaved ? 'movies-card__button_type_saved' : ''}`}>{isSaved ? '\u2713' : 'Сохранить'}</button>
+                    </MoviesCard>
+                    <MoviesCard>
+                        <button onClick={handleSave} type='button' className={`movies-card__button button-hover ${isSaved ? 'movies-card__button_type_saved' : ''}`}>{isSaved ? '\u2713' : 'Сохранить'}</button>
+                    </MoviesCard>
+                    <MoviesCard>
+                        <button onClick={handleSave} type='button' className={`movies-card__button button-hover ${isSaved ? 'movies-card__button_type_saved' : ''}`}>{isSaved ? '\u2713' : 'Сохранить'}</button>
+                    </MoviesCard>
+                    <MoviesCard>
+                        <button onClick={handleSave} type='button' className={`movies-card__button button-hover ${isSaved ? 'movies-card__button_type_saved' : ''}`}>{isSaved ? '\u2713' : 'Сохранить'}</button>
+                    </MoviesCard>
+                    <MoviesCard>
+                        <button onClick={handleSave} type='button' className={`movies-card__button button-hover ${isSaved ? 'movies-card__button_type_saved' : ''}`}>{isSaved ? '\u2713' : 'Сохранить'}</button>
+                    </MoviesCard>
+                </MoviesCardList>
+            </main>
             <Footer />
         </>
     )

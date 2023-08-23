@@ -5,7 +5,7 @@ import React from 'react';
 
 function Login(props) {
     return (
-        <div className='login'>
+        <main className='login'>
             <LoginForm
                 title='Рады видеть!'
                 submit='Войти'
@@ -17,7 +17,7 @@ function Login(props) {
                 <Input name='E-mail' value='pochta@yandex.ru|' type='email' />
                 <Input name='Пароль' value='fgsdfgsdfgsdfg' type='password' />
             </LoginForm>
-        </div>
+        </main>
     )
 }
 

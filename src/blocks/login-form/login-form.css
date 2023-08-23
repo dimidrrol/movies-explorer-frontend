@@ -2,12 +2,12 @@
     width: 396px;
     display: flex;
     flex-direction: column;
-    margin: 70px auto 70px;
+    margin: 70px auto 0px;
 }
 
 @media screen and (max-width: 768px) {
     .login-form {
-        margin: 232px auto 232px;
+        margin: 232px auto 0px;
     }
 }
 

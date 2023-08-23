@@ -5,7 +5,7 @@ import React from 'react';
 
 function Register(props) {
     return (
-        <div className='login'>
+        <main className='login'>
             <LoginForm
                 title='Добро пожаловать!'
                 submit='Зарегистрироваться'
@@ -18,7 +18,7 @@ function Register(props) {
                 <Input name='E-mail' value='pochta@yandex.ru|' type='email' />
                 <Input name='Пароль' value='fgsdfgsdfgsdfg' type='password' />
             </LoginForm>
-        </div>
+        </main>
     )
 }
 

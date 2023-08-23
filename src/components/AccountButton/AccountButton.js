@@ -1,5 +1,5 @@
 import './AccountButton.css';
-import accountIcon from '../../images/account-icon.png';
+import accountIcon from '../../images/account-icon.svg';
 import React from 'react';
 
 function AccountButton(props) {

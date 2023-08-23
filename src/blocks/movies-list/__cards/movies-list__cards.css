@@ -7,11 +7,24 @@
     margin: 70px auto 10px;
 }
 
+@media screen and (max-width: 1170px) {
+    .movies-list__cards {
+        width: 900px;
+    }
+}
+
 @media screen and (max-width: 930px) {
     .movies-list__cards {
         grid-template-columns: repeat(2, 1fr);
         column-gap: 24px;
         row-gap: 35px;
+        width: 708px;
+    }
+}
+
+@media screen and (max-width: 740px) {
+    .movies-list__cards {
+        width: 570px;
     }
 }
 
@@ -19,5 +32,7 @@
     .movies-list__cards {
         grid-template-columns: repeat(1, 1fr);
         row-gap: 16px;
+        margin-top: 40px;
+        width: 300px;
     }
 }

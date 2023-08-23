@@ -2,18 +2,18 @@
     display: flex;
     flex-direction: column;
     width: 410px;
-    margin: 74px auto 70px;
+    margin: 74px auto 0px;
 }
 
 @media screen and (max-width: 768px) {
     .profile-form {
-        margin: 236px auto 269px;
+        margin: 236px auto 0px;
     }
 }
 
 @media screen and (max-width: 420px) and (min-width: 320px) {
     .profile-form {
         width: 260px;
-        margin: 70px auto 40px;
+        margin: 70px auto 0px;
     }
 }

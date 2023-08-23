@@ -6,7 +6,7 @@ function Navigation(props) {
     return (
         <div className={`popup ${props.isOpen ? 'popup_opened' : ''}`}>
             <div className='popup__container'>
-                <button onClick={props.onClose} type='button' className='popup__close-button button-hover' />
+                <button onClick={props.onClose} type='button' className='popup__close-button button-hover'>&#10006;</button>
                 <div className='popup__button-container'>
                     <button onClick={props.navigateMain} type='button' className='popup__button button-hover'>Главная</button>
                     <button onClick={props.navigateMovies} type='button' className='popup__button button-hover'>Фильмы</button>

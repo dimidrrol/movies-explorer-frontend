@@ -18,18 +18,20 @@ function SavedMovies(props) {
                 navigateLogin={props.navigateLogin}
                 navigateRegister={props.navigateRegister}
             />
-            <SearchForm />
-            <MoviesCardList>
-                <MoviesCard>
-                    <button type='button' className='movies-card__button button-hover'>&#10006;</button>
-                </MoviesCard>
-                <MoviesCard>
-                    <button type='button' className='movies-card__button button-hover'>&#10006;</button>
-                </MoviesCard>
-                <MoviesCard>
-                    <button type='button' className='movies-card__button button-hover'>&#10006;</button>
-                </MoviesCard>
-            </MoviesCardList>
+            <main>
+                <SearchForm />
+                <MoviesCardList>
+                    <MoviesCard>
+                        <button type='button' className='movies-card__button button-hover'>&#10006;</button>
+                    </MoviesCard>
+                    <MoviesCard>
+                        <button type='button' className='movies-card__button button-hover'>&#10006;</button>
+                    </MoviesCard>
+                    <MoviesCard>
+                        <button type='button' className='movies-card__button button-hover'>&#10006;</button>
+                    </MoviesCard>
+                </MoviesCardList>
+            </main>
             <Footer />
         </>
     )

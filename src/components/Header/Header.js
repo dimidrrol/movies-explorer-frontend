@@ -1,8 +1,8 @@
-import logo from '../../images/logo.png';
+import logo from '../../images/logo.svg';
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import AccountButton from '../AccountButton/AccountButton';
-import hamburgerIcon from '../../images/hamburger-icon.png';
+import hamburgerIcon from '../../images/hamburger-icon.svg';
 import './Header.css';
 
 function Header(props) {
@@ -11,7 +11,7 @@ function Header(props) {
 
     return (
         <header className={location.pathname === '/' ? 'header header_main' : 'header'}>
-            <img onClick={props.navigateMain} src={logo} className='header__logo' alt='Логотип' />
+            <a href='/' className='header__logo link-hover'><img src={logo} alt='Логотип'/></a>
             {loggedIn ? (
                 <nav className="header__nav header__nav_type_logged">
                     <button onClick={props.navigateMovies} type="button" className="header__button header__button_type_films button-hover">Фильмы</button>
