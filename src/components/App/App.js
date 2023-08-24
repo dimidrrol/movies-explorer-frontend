@@ -102,13 +102,11 @@ function App() {
         <Route path='/signup' pathName element={
           <Register
             navigateLogin={handleNvigateLogin}
-            navigateMain={handleNavigateMain}
           />
         } />
         <Route path='/signin' pathName element={
           <Login
             navigateRegister={handleNavigateRegister}
-            navigateMain={handleNavigateMain}
           />
         } />
         <Route path='/*' pathName element={

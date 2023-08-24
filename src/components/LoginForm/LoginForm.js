@@ -8,7 +8,7 @@ function LoginForm(props) {
 
   return (
     <form className='login-form'>
-      <img onClick={props.navigateMain} src={logo} alt='Логотип' className='login-form__logo' />
+      <a href='/' className='login-form__logo link-hover'><img src={logo} alt='Логотип' /></a>
       <h2 className='login-form__title'>{props.title}</h2>
       <div className='login-form__input-container'>
         {props.children}

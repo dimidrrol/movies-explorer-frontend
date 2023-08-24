@@ -12,7 +12,6 @@ function Login(props) {
                 question='Ещё не зарегистрированы? '
                 navigate='Регистрация'
                 navigateRegister={props.navigateRegister}
-                navigateMain={props.navigateMain}
             >
                 <Input name='E-mail' value='pochta@yandex.ru|' type='email' />
                 <Input name='Пароль' value='fgsdfgsdfgsdfg' type='password' />
