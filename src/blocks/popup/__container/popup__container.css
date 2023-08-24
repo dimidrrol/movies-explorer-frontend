@@ -1,0 +1,13 @@
+.popup__container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: #202020;
+    width: 520px;
+}
+
+@media screen and (max-width: 520px) and (min-width: 320px) {
+    .popup__container {
+        width: 320px;
+    }
+}

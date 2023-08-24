@@ -1,0 +1,11 @@
+.about-project__backend {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+@media screen and (max-width: 600px) and (min-width: 320px) {
+    .about-project__backend {
+        grid-column: 1 / span 2;
+    }
+}

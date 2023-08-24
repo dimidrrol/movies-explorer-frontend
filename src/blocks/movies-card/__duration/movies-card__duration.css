@@ -1,0 +1,14 @@
+.movies-card__duration {
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+    color: #8B8B8B;
+    text-align: right;
+}
+
+@media screen and (max-width: 600px) {
+    .movies-card__duration {
+        font-size: 10px;
+    }
+}

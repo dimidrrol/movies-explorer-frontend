@@ -1,0 +1,14 @@
+.login-form__title {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    color: #ffffff;
+    margin: 40px 0;
+}
+
+@media screen and (max-width: 420px) and (min-width: 320px) {
+    .login-form__title {
+        text-align: center;
+    }
+}

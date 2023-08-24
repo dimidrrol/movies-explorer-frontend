@@ -1,0 +1,18 @@
+.search-form__toggle-container {
+    display: flex;
+    gap: 14px;
+    width: 170px;
+    margin: 0 0 44px 0;
+}
+
+@media screen and (max-width: 768px) {
+    .search-form__toggle-container {
+        margin-bottom: 51px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .search-form__toggle-container {
+        margin-bottom: 63px;
+    }
+}

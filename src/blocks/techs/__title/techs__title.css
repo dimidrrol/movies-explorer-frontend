@@ -1,0 +1,25 @@
+.techs__title {
+    margin: 90px auto 26px;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 58px;
+    color: #ffffff;
+    width: 600px;
+    text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+    .techs__title {
+        margin: 80px auto 22px;
+    }
+}
+
+@media screen and (max-width: 620px) and (min-width: 320px) {
+    .techs__title {
+        margin: 60px auto 24px;
+        font-size: 30px;
+        line-height: normal;
+        width: 292px;
+    }
+}

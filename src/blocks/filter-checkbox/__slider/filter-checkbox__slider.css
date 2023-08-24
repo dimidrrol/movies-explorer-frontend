@@ -1,0 +1,23 @@
+.filter-checkbox__slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    cursor: pointer;
+    border-radius: 20px;
+    background-color: #343434;
+    transition: 0.4s;
+}
+
+.filter-checkbox__slider::before {
+    position: absolute;
+    content: "";
+    height: 10px;
+    width: 10px;
+    left: 5px;
+    bottom: 5px;
+    border-radius: 50%;
+    background-color: #A0A0A0;
+    transition: 0.4s;
+}

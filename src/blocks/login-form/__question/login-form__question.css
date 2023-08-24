@@ -1,0 +1,14 @@
+.login-form__question {
+    margin: 0;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: #8B8B8B;
+}
+
+@media screen and (max-width: 420px) and (min-width: 320px) {
+    .login-form__question {
+        font-size: 12px;
+    }
+}

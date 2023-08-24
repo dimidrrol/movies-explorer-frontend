@@ -1,0 +1,33 @@
+.about-project__roadmap {
+    width: 1140px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    margin: 0 auto 110px;
+}
+
+@media screen and (max-width: 1160px) {
+    .about-project__roadmap {
+        width: 900px;
+    }
+}
+
+@media screen and (max-width: 930px) {
+    .about-project__roadmap {
+        width: 668px;
+        margin-bottom: 90px;
+    }
+}
+
+@media screen and (max-width: 690px) {
+    .about-project__roadmap {
+        width: 570px;
+    }
+}
+
+@media screen and (max-width: 600px) and (min-width: 320px) {
+    .about-project__roadmap {
+        width: 284px;
+        margin-bottom: 70px;
+    }
+}

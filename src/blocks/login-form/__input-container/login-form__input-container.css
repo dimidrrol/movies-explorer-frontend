@@ -1,0 +1,6 @@
+.login-form__input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin: 0 auto 152px;
+}
