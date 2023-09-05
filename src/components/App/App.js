@@ -12,6 +12,7 @@ import NotFound from '../NotFound/NotFound';
 import { getFilms } from '../../utils/MoviesApi';
 import { api } from '../../utils/MainApi';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import { ProtectedLoggedRouteElement, ProtectedRouteElement } from '../ProtectedRoute/ProtectedRoute';
 
 function App() {
   const [isPopupOpen, setIsPopupOpen] = React.useState(false);
@@ -102,6 +103,7 @@ function App() {
         api.authorize(email, password)
           .then(() => {
             handleNavigateMovies();
+            setLoggedIn(true);
           })
           .catch((err) => {
             console.log(err);
@@ -270,7 +272,7 @@ function App() {
     localStorage.removeItem('searchValue');
     localStorage.removeItem('switch');
     setMovies([]);
-    handleNvigateLogin();
+    handleNavigateMain();
   }
 
   function handleNavigateMain() {
@@ -340,7 +342,8 @@ function App() {
             />
           } />
           <Route path='/movies' pathName element={
-            <Movies
+            <ProtectedLoggedRouteElement
+              element={Movies}
               onHamburgerClick={handleHamburgerClick}
               navigateMain={handleNavigateMain}
               navigateMovies={handleNavigateMovies}
@@ -362,7 +365,8 @@ function App() {
             />
           } />
           <Route path='/saved-movies' pathName element={
-            <SavedMovies
+            <ProtectedLoggedRouteElement
+              element={SavedMovies}
               onHamburgerClick={handleHamburgerClick}
               navigateMain={handleNavigateMain}
               navigateMovies={handleNavigateMovies}
@@ -376,11 +380,11 @@ function App() {
               savedSearchValue={savedSearchValue}
               loggedIn={loggedIn}
               savedMovies={savedMovies}
-              moviesToShow={moviesToShow}
-            />
+              moviesToShow={moviesToShow} />
           } />
           <Route path='/profile' pathName element={
-            <Profile
+            <ProtectedLoggedRouteElement
+              element={Profile}
               onHamburgerClick={handleHamburgerClick}
               navigateMain={handleNavigateMain}
               navigateMovies={handleNavigateMovies}
@@ -393,17 +397,21 @@ function App() {
             />
           } />
           <Route path='/signup' pathName element={
-            <Register
+            <ProtectedRouteElement
+              element={Register}
               navigateLogin={handleNvigateLogin}
               onRegister={handleRegister}
               formError={formError}
+              loggedIn={loggedIn}
             />
           } />
           <Route path='/signin' pathName element={
-            <Login
+            <ProtectedRouteElement
+              element={Login}
               navigateRegister={handleNavigateRegister}
               onLogin={handleLogin}
               formError={formError}
+              loggedIn={loggedIn}
             />
           } />
           <Route path='/*' pathName element={
