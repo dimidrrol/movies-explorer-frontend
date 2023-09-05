@@ -116,7 +116,7 @@ class Api {
 }
 
 export const api = new Api({
-    url: 'https://api.films.student.project.nomoreparties.co',
+    url: 'http://localhost:3001',
     headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'

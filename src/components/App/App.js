@@ -99,7 +99,13 @@ function App() {
   function handleRegister(name, email, password) {
     api.register(name, email, password)
       .then(() => {
-        handleNvigateLogin();
+        api.authorize(email, password)
+          .then(() => {
+            handleNavigateMovies();
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       })
       .catch((err) => {
         console.log(err);
@@ -108,7 +114,7 @@ function App() {
         } else if (err.includes('500')) {
           setFormError('При регистрации пользователя произошла ошибка.')
         }
-      });
+      })
   }
 
   function handleLogin(email, password) {

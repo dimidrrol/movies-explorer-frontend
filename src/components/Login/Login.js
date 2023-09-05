@@ -5,7 +5,7 @@ import React from 'react';
 import { useFormWithValidation } from '../FormValidation/FormValidation';
 
 function Login(props) {
-    const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation();
+    const { values, handleChange, errors, isValid, resetForm} = useFormWithValidation();
 
     function handleSubmit(evt) {
         evt.preventDefault();
