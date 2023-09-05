@@ -7,12 +7,11 @@ import './Header.css';
 
 function Header(props) {
     const location = useLocation();
-    const [loggedIn] = React.useState(true);
 
     return (
         <header className={location.pathname === '/' ? 'header header_main' : 'header'}>
-            <a href='/' className='header__logo link-hover'><img src={logo} alt='Логотип'/></a>
-            {loggedIn ? (
+            <a href='/' className='header__logo link-hover'><img src={logo} alt='Логотип' /></a>
+            {props.loggedIn ? (
                 <nav className="header__nav header__nav_type_logged">
                     <button onClick={props.navigateMovies} type="button" className="header__button header__button_type_films button-hover">Фильмы</button>
                     <button onClick={props.navigateSavedMovies} type="button" className="header__button header__button_type_saved-films button-hover">Сохранённые фильмы</button>

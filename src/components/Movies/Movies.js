@@ -4,19 +4,10 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import MoviesCard from '../MoviesCard/MoviesCard';
+import Preloader from '../Preloader/Preloader';
 import React from 'react';
 
 function Movies(props) {
-    const [isSaved, setIsSaved] = React.useState(false);
-
-    function handleSave() {
-        if (isSaved) {
-            setIsSaved(false);
-        } else {
-            setIsSaved(true);
-        }
-    }
-
     return (
         <>
             <Header
@@ -27,38 +18,19 @@ function Movies(props) {
                 navigateProfile={props.navigateProfile}
                 navigateLogin={props.navigateLogin}
                 navigateRegister={props.navigateRegister}
+                loggedIn={props.loggedIn}
             />
             <main>
-                <SearchForm />
-                <MoviesCardList>
-                    <MoviesCard>
-                        <button onClick={handleSave} type='button' className={`movies-card__button button-hover ${isSaved ? 'movies-card__button_type_saved' : ''}`}>{isSaved ? '\u2713' : 'Сохранить'}</button>
-                    </MoviesCard>
-                    <MoviesCard>
-                        <button onClick={handleSave} type='button' className={`movies-card__button button-hover ${isSaved ? 'movies-card__button_type_saved' : ''}`}>{isSaved ? '\u2713' : 'Сохранить'}</button>
-                    </MoviesCard>
-                    <MoviesCard>
-                        <button onClick={handleSave} type='button' className={`movies-card__button button-hover ${isSaved ? 'movies-card__button_type_saved' : ''}`}>{isSaved ? '\u2713' : 'Сохранить'}</button>
-                    </MoviesCard>
-                    <MoviesCard>
-                        <button onClick={handleSave} type='button' className={`movies-card__button button-hover ${isSaved ? 'movies-card__button_type_saved' : ''}`}>{isSaved ? '\u2713' : 'Сохранить'}</button>
-                    </MoviesCard>
-                    <MoviesCard>
-                        <button onClick={handleSave} type='button' className={`movies-card__button button-hover ${isSaved ? 'movies-card__button_type_saved' : ''}`}>{isSaved ? '\u2713' : 'Сохранить'}</button>
-                    </MoviesCard>
-                    <MoviesCard>
-                        <button onClick={handleSave} type='button' className={`movies-card__button button-hover ${isSaved ? 'movies-card__button_type_saved' : ''}`}>{isSaved ? '\u2713' : 'Сохранить'}</button>
-                    </MoviesCard>
-                    <MoviesCard>
-                        <button onClick={handleSave} type='button' className={`movies-card__button button-hover ${isSaved ? 'movies-card__button_type_saved' : ''}`}>{isSaved ? '\u2713' : 'Сохранить'}</button>
-                    </MoviesCard>
-                    <MoviesCard>
-                        <button onClick={handleSave} type='button' className={`movies-card__button button-hover ${isSaved ? 'movies-card__button_type_saved' : ''}`}>{isSaved ? '\u2713' : 'Сохранить'}</button>
-                    </MoviesCard>
-                    <MoviesCard>
-                        <button onClick={handleSave} type='button' className={`movies-card__button button-hover ${isSaved ? 'movies-card__button_type_saved' : ''}`}>{isSaved ? '\u2713' : 'Сохранить'}</button>
-                    </MoviesCard>
-                </MoviesCardList>
+                <SearchForm searchValue={props.searchValue} onHandleSearchValue={props.onHandleSearchValue} movies={props.movies} getMovies={props.getMovies} onToggleSwitchShortMovies={props.onToggleSwitchShortMovies} isSwitchOn={props.isSwitchOn} />
+                {props.movies.length !== 0 ?
+                    <MoviesCardList onShowMoreMovies={props.onShowMoreMovies} receivedObject={props.receivedObject} moviesToShow={props.moviesToShow}>
+                        {props.isLoading ? <Preloader /> : props.receivedObject.length === 0 ? (<h2 className='movies-list__error'>{props.error}</h2>) : props.receivedObject.slice(0, props.moviesToShow).map(card => {
+                            return (
+                                <MoviesCard card={card} key={card.id} onToggleLikeMovie={props.onToggleLikeMovie} />
+                            )
+                        })}
+                    </MoviesCardList> :
+                    <></>}
             </main>
             <Footer />
         </>

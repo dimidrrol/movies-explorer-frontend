@@ -18,6 +18,7 @@ function Main(props) {
                 navigateProfile={props.navigateProfile}
                 navigateLogin={props.navigateLogin}
                 navigateRegister={props.navigateRegister}
+                loggedIn={props.loggedIn}
             />
             <main>
                 <Promo />

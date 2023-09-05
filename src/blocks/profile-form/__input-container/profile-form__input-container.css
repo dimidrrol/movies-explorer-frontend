@@ -3,11 +3,16 @@
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid #424242;
+    position: relative;
 }
 
 .profile-form__input-container:nth-child(3) {
     border-bottom: none;
     margin-top: 17px;
+}
+
+.profile-form__input-container:focus-within {
+    border-bottom: 1.5px solid #4285F4;
 }
 
 @media screen and (max-width: 420px) and (min-width: 320px) {

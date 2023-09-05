@@ -5,6 +5,8 @@
     column-gap: 30px;
     row-gap: 32px;
     margin: 70px auto 10px;
+    position: relative;
+    width: 100%;
 }
 
 @media screen and (max-width: 1170px) {

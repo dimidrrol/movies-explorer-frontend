@@ -5,8 +5,8 @@ function Input(props) {
     return (
         <div className='input'>
             <label className='input__label'>{props.name}</label>
-            <input className='input__input' type={props.type} placeholder={props.name} value={props.value} required />
-            <span className='input__error-message'>Что-то пошло не так...</span>
+            <input onChange={props.onChange} className='input__input' type={props.type} placeholder={props.placeholder} value={props.inputValue || ''} name={props.name} required />
+            <span className='input__error-message'>{props.errors}</span>
         </div>
     )
 }
