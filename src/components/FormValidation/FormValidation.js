@@ -31,7 +31,13 @@ export function useFormWithValidation() {
         if (name === 'email') {
             setErrors({ ...errors, [name]: value.match(emailPattern) ? '' : 'Введите корректный Email' });
         } else if (name === 'name') {
-            setErrors({ ...errors, [name]: value.match(namePattern) ? '' : 'Введите корректное имя' });
+            if (value.trim() === '') {
+                setErrors({ ...errors, [name]: 'Поле Имя обязательно для заполнения' });
+            } else if (value.trim().length < 2) {
+                setErrors({ ...errors, [name]: 'Имя должно содержать минимум 2 символа' });
+            } else {
+                setErrors({ ...errors, [name]: value.match(namePattern) ? '' : 'Введите корректное имя' });
+            }
         } else {
             setErrors({ ...errors, [name]: target.validationMessage });
         }

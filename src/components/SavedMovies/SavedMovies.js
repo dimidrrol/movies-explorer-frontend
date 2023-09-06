@@ -4,7 +4,6 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import MoviesCard from '../MoviesCard/MoviesCard';
-import { api } from '../../utils/MainApi';
 import React from 'react';
 
 function SavedMovies(props) {

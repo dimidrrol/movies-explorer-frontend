@@ -22,7 +22,7 @@ function Movies(props) {
             />
             <main>
                 <SearchForm searchValue={props.searchValue} onHandleSearchValue={props.onHandleSearchValue} movies={props.movies} getMovies={props.getMovies} onToggleSwitchShortMovies={props.onToggleSwitchShortMovies} isSwitchOn={props.isSwitchOn} />
-                {props.movies.length !== 0 ?
+                {props.movies.length || (props.receivedObject && props.receivedObject.length) ?
                     <MoviesCardList onShowMoreMovies={props.onShowMoreMovies} receivedObject={props.receivedObject} moviesToShow={props.moviesToShow}>
                         {props.isLoading ? <Preloader /> : props.receivedObject.length === 0 ? (<h2 className='movies-list__error'>{props.error}</h2>) : props.receivedObject.slice(0, props.moviesToShow).map(card => {
                             return (

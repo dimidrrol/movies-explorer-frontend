@@ -28,6 +28,7 @@ function App() {
   const [currentUser, setCurrentUser] = React.useState({});
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [isSwitchOn, setIsSwitchOn] = React.useState(false);
+  const [isSuccess, setIssuccess] = React.useState(false);
   const [filteredMovies, setFilteredMovies] = React.useState([]);
   const navigate = useNavigate();
   const location = useLocation();
@@ -40,8 +41,10 @@ function App() {
         .then((data) => {
           if (data) {
             setCurrentUser({ name: data.name, email: data.email });
-            setReceivedObject(localFilteredMovies);
             setLoggedIn(true);
+            setReceivedObject(localFilteredMovies);
+            setMovies(localFilteredMovies);
+            setMoviesToShow(getMoviesToShow());
           }
         })
         .catch((err) => {
@@ -51,7 +54,7 @@ function App() {
   }, [])
 
   React.useEffect(() => {
-    setMoviesToShow(getMoviesToShow());
+    setFilteredMovies(savedMovies);
     movies.forEach((movie) => {
       if (savedMovies.some((save) => save.movieId === movie.id)) {
         movie.isFavorite = true;
@@ -59,18 +62,20 @@ function App() {
         movie.isFavorite = false;
       }
     });
-  }, [movies, savedMovies])
+  }, [movies, savedMovies, receivedObject])
 
   React.useEffect(() => {
-    setSearchValue(localStorage.getItem('searchValue'));
-    const filteredMovies = movies.filter(movie => movie.nameRU.toLowerCase().includes(searchValue.toLowerCase()) || movie.nameEN.toLowerCase().includes(searchValue.toLowerCase()));
-    setReceivedObject(filteredMovies);
-    if (filteredMovies.length !== 0) {
-      localStorage.setItem('filteredMovies', JSON.stringify(filteredMovies));
-    } else {
-      setError('Ничего не найдено');
+    if (movies.length !== 0 && searchValue.length !== 0) {
+      setSearchValue(localStorage.getItem('searchValue'));
+      const filteredMovies = movies.filter(movie => movie.nameRU.toLowerCase().includes(searchValue.toLowerCase()) || movie.nameEN.toLowerCase().includes(searchValue.toLowerCase()));
+      setReceivedObject(filteredMovies);
+      if (filteredMovies.length !== 0) {
+        localStorage.setItem('filteredMovies', JSON.stringify(filteredMovies));
+      } else {
+        setError('Ничего не найдено');
+      }
     }
-  }, [movies])
+  }, [movies, loggedIn])
 
   React.useEffect(() => {
     const handleResize = () => {
@@ -86,7 +91,7 @@ function App() {
     } else {
       setIsSwitchOn(false);
     }
-  }, [movies]);
+  }, [movies, receivedObject]);
 
   React.useEffect(() => {
     api.getMoviesInfo()
@@ -113,7 +118,7 @@ function App() {
     api.register(name, email, password)
       .then(() => {
         api.authorize(email, password)
-          .then((data) => {
+          .then(() => {
             handleNavigateMovies();
             setLoggedIn(true);
             getUserInfo();
@@ -152,9 +157,12 @@ function App() {
   function patchUser(name, email) {
     api.patchUser(name, email)
       .then((data) => {
-        setCurrentUser({ name: data.name, email: data.email});
+        setCurrentUser({ name: data.name, email: data.email });
+        setFormError('Данные успешно изменены');
+        setIssuccess(true);
       })
       .catch((err) => {
+        setIssuccess(false);
         console.log(err);
         if (err.includes('409')) {
           setFormError('Пользователь с таким email уже существует.')
@@ -170,6 +178,9 @@ function App() {
       .then((movies) => {
         setMovies(movies);
         setMoviesToShow(getMoviesToShow());
+        const filteredMovies = movies.filter(movie => movie.nameRU.toLowerCase().includes(searchValue.toLowerCase()) || movie.nameEN.toLowerCase().includes(searchValue.toLowerCase()));
+        localStorage.setItem('filteredMovies', JSON.stringify(filteredMovies));
+        setReceivedObject(filteredMovies);
       })
       .catch((err) => {
         console.log(err);
@@ -220,6 +231,7 @@ function App() {
     )
       .then((savedMovie) => {
         setSavedMovies([...savedMovies, savedMovie]);
+        movie.isFavorite = true;
       })
       .catch((err) => {
         console.log(err);
@@ -279,7 +291,7 @@ function App() {
       const filteredMovies = movies.filter((movie) => movie.duration <= 55);
       localStorage.setItem('filteredMovies', JSON.stringify(filteredMovies));
       localStorage.setItem('switch', 'true');
-      setMovies(filteredMovies);
+      setReceivedObject(filteredMovies);
     } else {
       localStorage.setItem('switch', 'false');
       getMovies()
@@ -296,6 +308,7 @@ function App() {
     handleNavigateMain();
     setLoggedIn(false);
     setCurrentUser({});
+    setReceivedObject([]);
   }
 
   function handleNavigateMain() {
@@ -420,6 +433,7 @@ function App() {
               onPatchUser={patchUser}
               loggedIn={loggedIn}
               formError={formError}
+              isSuccess={isSuccess}
             />
           } />
           <Route path='/signup' pathName element={

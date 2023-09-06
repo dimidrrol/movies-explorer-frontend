@@ -31,7 +31,7 @@ function Profile(props) {
           <h2 className='profile-form__title'>{`Привет, ${currentUser.name}!`}</h2>
           <div className='profile-form__input-container'>
             <p className='profile-form__input-name'>Имя</p>
-            <input pattern={namePattern.source} onChange={handleChange} name='name' type='text' placeholder='Имя' value={values.name || ''} className='profile-form__input' />
+            <input pattern={namePattern.source} onChange={handleChange} name='name' type='text' placeholder='Имя' value={values.name || ''} className='profile-form__input' minLength={2} maxLength={30} />
             <span className='profile-form__error'>{errors.name}</span>
           </div>
           <div className='profile-form__input-container'>
@@ -40,8 +40,8 @@ function Profile(props) {
             <span className='profile-form__error'>{errors.email}</span>
           </div>
           <div className='profile-form__button-container'>
-            <span className='button-error'>{props.formError}</span>
-            <button type='submit' disabled={(isValid && (values.name !== currentUser.name || values.email !== currentUser.email)) ? false : true} className={`profile-form__button ${(isValid && (values.name !== currentUser.name || values.email !== currentUser.email)) ? 'button-hover' : 'profile-form__button_disabled'} `}>Редактировать</button>
+            <span className={`button-error ${props.isSuccess ? 'button-error_success' : ''}`}>{props.formError}</span>
+            <button type='submit' disabled={(isValid && (values.name !== currentUser.name || values.email !== currentUser.email) && (values.name && values.name.length > 0)) ? false : true} className={`profile-form__button ${(isValid && (values.name !== currentUser.name || values.email !== currentUser.email) && (values.name && values.name.length > 0)) ? 'button-hover' : 'profile-form__button_disabled'} `}>Редактировать</button>
             <button onClick={props.onLogout} type='button' className='profile-form__button profile-form__button_type_logout button-hover'>Выйти из аккаунта</button>
           </div>
         </form>
