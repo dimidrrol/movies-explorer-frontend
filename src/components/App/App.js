@@ -28,6 +28,7 @@ function App() {
   const [currentUser, setCurrentUser] = React.useState({});
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [isSwitchOn, setIsSwitchOn] = React.useState(false);
+  const [filteredMovies, setFilteredMovies] = React.useState([]);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -38,9 +39,9 @@ function App() {
       api.getUserInfo(jwt)
         .then((data) => {
           if (data) {
-            setLoggedIn(true);
-            getUserInfo();
+            setCurrentUser({ name: data.name, email: data.email });
             setReceivedObject(localFilteredMovies);
+            setLoggedIn(true);
           }
         })
         .catch((err) => {
@@ -87,6 +88,17 @@ function App() {
     }
   }, [movies]);
 
+  React.useEffect(() => {
+    api.getMoviesInfo()
+      .then((movies) => {
+        setSavedMovies(movies);
+        setFilteredMovies(movies);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }, [movies, loggedIn]);
+
   function getUserInfo() {
     Promise.all([api.getUserInfo()])
       .then(([{ name, email, _id }]) => {
@@ -101,9 +113,10 @@ function App() {
     api.register(name, email, password)
       .then(() => {
         api.authorize(email, password)
-          .then(() => {
+          .then((data) => {
             handleNavigateMovies();
             setLoggedIn(true);
+            getUserInfo();
           })
           .catch((err) => {
             console.log(err);
@@ -124,6 +137,7 @@ function App() {
       .then(() => {
         handleNavigateMain();
         setLoggedIn(true);
+        getUserInfo();
       })
       .catch((err) => {
         console.log(err);
@@ -137,6 +151,9 @@ function App() {
 
   function patchUser(name, email) {
     api.patchUser(name, email)
+      .then((data) => {
+        setCurrentUser({ name: data.name, email: data.email});
+      })
       .catch((err) => {
         console.log(err);
         if (err.includes('409')) {
@@ -218,7 +235,11 @@ function App() {
   };
 
   function handleSavedMovies(object) {
-    setSavedMovies(object)
+    setSavedMovies(object);
+  };
+
+  function handleFilteredMovies(object) {
+    setFilteredMovies(object);
   };
 
   function handleSearchSavedMovies() {
@@ -273,6 +294,8 @@ function App() {
     localStorage.removeItem('switch');
     setMovies([]);
     handleNavigateMain();
+    setLoggedIn(false);
+    setCurrentUser({});
   }
 
   function handleNavigateMain() {
@@ -377,6 +400,9 @@ function App() {
               onHandleSavedSearchValue={handleSavedSearchValue}
               onHandleSearchSavedMovies={handleSearchSavedMovies}
               onSavedMovies={handleSavedMovies}
+              onHandleFilteredMovies={handleFilteredMovies}
+              filteredMovies={filteredMovies}
+              movies={movies}
               savedSearchValue={savedSearchValue}
               loggedIn={loggedIn}
               savedMovies={savedMovies}

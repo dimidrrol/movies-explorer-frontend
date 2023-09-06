@@ -8,25 +8,14 @@ import { api } from '../../utils/MainApi';
 import React from 'react';
 
 function SavedMovies(props) {
-    const [filteredMovies, setFilteredMovies] = React.useState([]);
     const [error, setError] = React.useState('');
     const [isSwitch, setIsSwitch] = React.useState(false);
 
-    React.useEffect(() => {
-        api.getMoviesInfo()
-            .then((movies) => {
-                props.onSavedMovies(movies);
-                setFilteredMovies(movies);
-            })
-            .catch((err) => {
-                console.log(err);
-            })
-    }, []);
 
     function handleSearch() {
         const filteredObject = props.savedMovies.filter(movie => movie.nameRU.toLowerCase().includes(props.savedSearchValue.toLowerCase()) || movie.nameEN.toLowerCase().includes(props.savedSearchValue.toLowerCase()));
         if (filteredObject.length !== 0) {
-            setFilteredMovies(filteredObject);
+            props.onHandleFilteredMovies(filteredObject);
             setError('');
         } else {
             setError('Ничего не найдено');
@@ -38,21 +27,21 @@ function SavedMovies(props) {
             const filteredObject = props.savedMovies.filter(movie => movie.duration <= 55);
             setIsSwitch(true);
             if (filteredObject.length !== 0) {
-                setFilteredMovies(filteredObject);
+                props.onHandleFilteredMovies(filteredObject);
                 setError('');
             } else {
                 setError('Ничего не найдено');
             }
         } else {
             const filteredObject = props.savedMovies.filter(movie => movie.nameRU.toLowerCase().includes(props.savedSearchValue.toLowerCase()) || movie.nameEN.toLowerCase().includes(props.savedSearchValue.toLowerCase()));
-            setFilteredMovies(filteredObject);
+            props.onHandleFilteredMovies(filteredObject);
             setIsSwitch(false);
             setError('');
         }
     }
 
     function handleFilteredMovies(object) {
-        setFilteredMovies(object);
+        props.onHandleFilteredMovies(object);
     };
 
 
@@ -70,10 +59,10 @@ function SavedMovies(props) {
             />
             <main>
                 <SearchForm isSwitch={isSwitch} onHandleToggleSwitch={handleToggleSwitch} onHandleSearch={handleSearch} onHandleSearchSavedMovies={props.onHandleSearchSavedMovies} savedSearchValue={props.savedSearchValue} onHandleSavedSearchValue={props.onHandleSavedSearchValue} />
-                <MoviesCardList filteredMovies={filteredMovies} savedMovies={props.savedMovies} onShowMoreMovies={props.onShowMoreMovies} moviesToShow={props.moviesToShow}>
-                    {!error ? filteredMovies.slice(0, props.moviesToShow).map(card => {
+                <MoviesCardList filteredMovies={props.filteredMovies} savedMovies={props.savedMovies} onShowMoreMovies={props.onShowMoreMovies} moviesToShow={props.moviesToShow}>
+                    {!error ? props.filteredMovies.slice(0, props.moviesToShow).map(card => {
                         return (
-                            <MoviesCard card={card} key={card._id} onDeleteMovie={props.onDeleteMovie} savedMovies={props.savedMovies} handleFilteredMovies={handleFilteredMovies} filteredMovies={filteredMovies} />
+                            <MoviesCard card={card} key={card._id} onDeleteMovie={props.onDeleteMovie} savedMovies={props.savedMovies} handleFilteredMovies={handleFilteredMovies} filteredMovies={props.filteredMovies} />
                         )
                     }) : (<h2 className='movies-list__error'>{error}</h2>)}
                 </MoviesCardList>

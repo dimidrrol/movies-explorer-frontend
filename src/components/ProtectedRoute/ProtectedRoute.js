@@ -1,9 +1,21 @@
 import React from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 export const ProtectedLoggedRouteElement = ({ element: Component, ...props }) => {
+    const navigate = useNavigate();
+
+    React.useEffect(() => {
+        setTimeout(() => {
+            if (!props.loggedIn) {
+                navigate('/', { replace: true })
+            } else {
+                navigate(Component, { state: { from: props.location } });
+            }
+        }, 100);
+    }, [props.loggedIn]);
+
     return (
-        props.loggedIn ? <Component {...props} /> : <Navigate to="/" replace />
+        props.loggedIn ? <Component {...props} /> : ''
     )
 };
 

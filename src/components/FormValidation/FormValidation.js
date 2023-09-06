@@ -1,4 +1,5 @@
 import React, { useCallback } from "react";
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 export function useForm() {
     const [values, setValues] = React.useState({});
@@ -17,17 +18,20 @@ export function useFormWithValidation() {
     const [values, setValues] = React.useState({});
     const [errors, setErrors] = React.useState({});
     const [isValid, setIsValid] = React.useState(false);
-    const emailPattern = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
-    const namePattern = /^[a-zA-Zа-яА-ЯёЁ\s-]+$/;
+    const [initialValues, setInitialValues] = React.useState({});
+    const currentUser = React.useContext(CurrentUserContext);
+    const emailPattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@(([^<>()[\]\\.,;:\s@"]+\.)+[^<>()[\]\\.,;:\s@"]{2,})$/i;
+    const namePattern = /^[\p{L}\s\-]*[\p{L}][\p{L}\s\-]*$/u;
 
     const handleChange = useCallback((evt) => {
         const target = evt.target;
         const value = target.value;
         const name = target.name;
+
         if (name === 'email') {
             setErrors({ ...errors, [name]: value.match(emailPattern) ? '' : 'Введите корректный Email' });
         } else if (name === 'name') {
-            setErrors({ ...errors, [name]: value.match(namePattern) ? '' : 'Введите корректное имя'});
+            setErrors({ ...errors, [name]: value.match(namePattern) ? '' : 'Введите корректное имя' });
         } else {
             setErrors({ ...errors, [name]: target.validationMessage });
         }
@@ -35,13 +39,20 @@ export function useFormWithValidation() {
         setIsValid(target.closest('form').checkValidity());
     }, [values, errors]);
 
+    React.useEffect(() => {
+        setValues({
+            name: currentUser.name || '',
+            email: currentUser.email || '',
+        });
+    }, [currentUser]);
+
     const resetForm = useCallback(
         (newValues = {}, newErrors = {}, newIsValid = false) => {
-            setValues(newValues);
+            setInitialValues(newValues);
             setErrors(newErrors);
             setIsValid(newIsValid);
         },
-        [setValues, setErrors, setIsValid]
+        [setInitialValues, setErrors, setIsValid]
     );
 
     return {
@@ -50,6 +61,10 @@ export function useFormWithValidation() {
         errors,
         isValid,
         resetForm,
-        emailPattern
+        emailPattern,
+        initialValues,
+        setInitialValues,
+        setValues,
+        namePattern
     };
 };
