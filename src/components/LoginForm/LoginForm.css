@@ -1,6 +1,7 @@
 @import url(../../blocks/login-form/__navigate-button/login-form__navigate-button.css);
 @import url(../../blocks/login-form/__question/login-form__question.css);
 @import url(../../blocks/login-form/__submit-button/login-form__submit-button.css);
+@import url(../../blocks/login-form/__submit-button/_disabled/login-form__submit-button_disabled.css);
 @import url(../../blocks/login-form/__button-container/login-form__button-container.css);
 @import url(../../blocks/login-form/__input-container/login-form__input-container.css);
 @import url(../../blocks/login-form/__title/login-form__title.css);

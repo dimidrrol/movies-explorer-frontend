@@ -1,8 +1,10 @@
 @import url(../../blocks/profile-form/__button/profile-form__button.css);
 @import url(../../blocks/profile-form/__button/_type/profile-form__button_type_logout.css);
+@import url(../../blocks/profile-form/__button/_disabled/profile-form__button_disabled.css);
 @import url(../../blocks/profile-form/__button-container/profile-form__button-container.css);
 @import url(../../blocks/profile-form/__input/profile-form__input.css);
 @import url(../../blocks/profile-form/__input-name/profile-form__input-name.css);
+@import url(../../blocks/profile-form/__error/profile-form__error.css);
 @import url(../../blocks/profile-form/__input-container/profile-form__input-container.css);
 @import url(../../blocks/profile-form/__title/profile-form__title.css);
 @import url(../../blocks/profile-form/profile-form.css);

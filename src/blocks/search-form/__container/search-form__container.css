@@ -9,6 +9,10 @@
     border: 1.5px solid rgba(170, 170, 170, 0.2);
 }
 
+.search-form__container:focus-within {
+    border: 1.5px solid #4285F4;
+}
+
 @media screen and (max-width: 1160px) {
     .search-form__container {
         width: 900px;

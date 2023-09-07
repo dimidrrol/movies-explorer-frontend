@@ -1,0 +1,21 @@
+.popup_closed {
+    animation: slide-left-reverse 0.4s ease-in-out;
+}
+
+.popup_closed::before {
+    opacity: 0;
+    visibility: hidden;
+    transition: visibility 0.2s, opacity 0.2s linear;
+}
+
+@keyframes slide-left-reverse {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}

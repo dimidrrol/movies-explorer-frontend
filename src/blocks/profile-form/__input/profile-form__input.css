@@ -9,10 +9,9 @@
     background-color: transparent;
     margin-bottom: 16px;
     cursor: pointer;
+    width: 60%;
 }
 
 .profile-form__input:focus {
     outline: none;
-    border-bottom: 1px solid #4285F4;
-
 }

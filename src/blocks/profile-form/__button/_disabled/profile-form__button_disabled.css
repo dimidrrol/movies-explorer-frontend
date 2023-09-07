@@ -1,0 +1,4 @@
+.profile-form__button_disabled {
+    color: grey;
+    cursor: unset;
+}
